@@ -9,13 +9,14 @@ const CryptoBox = () => {
   const [currCrypto, setCrypto] = useState(0);
   const [toggle, setToggle] = useState(false);
   const [currPrice, setPrice] = useState(0);
-  const [coins, setCoins] = useState(0.0);
+  const [coins, setCoins] = useState("");
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     let ws = new WebSocket(tokens[currCrypto].ws);
     let price = 0;
     setPrice("--");
+    setCoins("");
     if (currCrypto == 2) setPrice(80);
     ws.onmessage = (event) => {
       let data = JSON.parse(event.data);
@@ -58,15 +59,18 @@ const CryptoBox = () => {
           type="text"
           placeholder="0.00"
           className="invest-input"
+          value={coins}
           onChange={(e) => {
-            if (currPrice >= 1) setCoins(e.target.value / currPrice);
+            setCoins(e.target.value);
           }}
         />
         <div className="inr">INR</div>
         <div className="invest-text">
           Estimate Number of {tokens[currCrypto].abbr} You will Get
         </div>
-        <div className="result">{Math.round(coins * 100) / 100}</div>
+        <div className="result">
+          {currPrice > 0 ? Math.round((coins / currPrice) * 100) / 100 : 0.0}
+        </div>
         <button className="button" id="buy">
           Buy
         </button>
