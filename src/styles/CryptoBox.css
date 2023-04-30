@@ -1,0 +1,34 @@
+.box-container {
+  height: 86vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 5px solid white; */
+}
+
+.box {
+  width: 470px;
+  border: 2px solid #46425e;
+  padding: 70px 40px 48px 40px;
+}
+
+.current-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #627eea;
+}
+#rupee {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 27px;
+  padding-right: 10px;
+  color: #627eea;
+}
