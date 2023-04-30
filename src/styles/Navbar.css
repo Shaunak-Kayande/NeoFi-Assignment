@@ -11,12 +11,15 @@
   display: flex;
   height: 100%;
   align-items: center;
+  background: #0b0819;
 }
 
 .logo-pic {
   display: grid;
   padding-left: 40px;
   padding-right: 10px;
+  background: #0b0819;
+  margin-left: 80px;
 }
 
 .menu {
@@ -25,11 +28,14 @@
   align-items: center;
   color: #5a5a5a;
   gap: 15px;
+  margin-left: 170px;
+  background: #0b0819;
 }
 
 .menu-items {
   padding-left: 15px;
   padding-right: 15px;
+  background: #0b0819;
 }
 
 #trade {
@@ -48,4 +54,5 @@
   height: 35px;
   width: 130px;
   margin-right: 120px;
+  padding: 0 5px 0 5px;
 }
