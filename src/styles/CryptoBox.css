@@ -1,5 +1,5 @@
 .box-container {
-  height: 130vh;
+  /* height: 130vh; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -15,6 +15,7 @@
   border-image: linear-gradient(to bottom, #46425e, black) 1;
   border-radius: 18px;
   padding: 70px 40px 48px 40px;
+  margin-top: 5vh;
   z-index: 10;
   background: #0b0819;
 }

@@ -71,9 +71,9 @@ const CryptoBox = () => {
         <div className="result">
           {currPrice > 0 ? Math.round((coins / currPrice) * 100) / 100 : 0.0}
         </div>
-        <button className="button" id="buy">
+        {/* <button className="button" id="buy">
           Buy
-        </button>
+        </button> */}
       </div>
 
       {/* DropDown */}
@@ -96,35 +96,37 @@ const CryptoBox = () => {
               className="search"
               onChange={(e) => setSearch(e.target.value)}
             />
-            {tokens
-              .filter((item) => {
-                return search.toLowerCase() === ""
-                  ? item
-                  : item.name.toLowerCase().includes(search);
-              })
-              .map((item, id) => {
-                return (
-                  <div
-                    className="dropdown-item"
-                    key={id}
-                    onClick={() => {
-                      setCrypto(item.index);
-                      setToggle(false);
-                      setSearch("");
-                    }}
-                  >
-                    <div className="token">
-                      <img src={item.logo} className="logo" alt="" />
-                      {item.name}
+            <div className="dropdown-items">
+              {tokens
+                .filter((item) => {
+                  return search.toLowerCase() === ""
+                    ? item
+                    : item.name.toLowerCase().includes(search);
+                })
+                .map((item, id) => {
+                  return (
+                    <div
+                      className="dropdown-item"
+                      key={id}
+                      onClick={() => {
+                        setCrypto(item.index);
+                        setToggle(false);
+                        setSearch("");
+                      }}
+                    >
+                      <div className="token">
+                        <img src={item.logo} className="logo" alt="" />
+                        {item.name}
+                      </div>
+                      {currCrypto == item.index ? (
+                        <MdCheck className="check" size={"25px"} />
+                      ) : (
+                        ""
+                      )}
                     </div>
-                    {currCrypto == item.index ? (
-                      <MdCheck className="check" size={"25px"} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+            </div>
           </div>
         </div>
       )}
