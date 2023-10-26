@@ -31,12 +31,26 @@ const CryptoBox = () => {
   };
 
   let currencyFetch = async () => {
+    const options = {
+      method: "GET",
+      url: "https://currency-exchange.p.rapidapi.com/exchange",
+      params: {
+        from: "GBP",
+        to: "INR",
+        q: "1.0",
+      },
+      headers: {
+        "X-RapidAPI-Key": "576deacf59msh6c5a79f92f53feep11db34jsn7727c0865a26",
+        "X-RapidAPI-Host": "currency-exchange.p.rapidapi.com",
+      },
+    };
+
     let price = 0;
     setPrice("--");
     setCoins("");
 
-    let data = await axios(tokens[20].ws);
-    price = data.data.rates["INR"] / data.data.rates["GBP"];
+    let data = await axios.request(options);
+    price = data.data;
     setPrice(Math.round(price * 100) / 100);
     console.log(price);
   };
