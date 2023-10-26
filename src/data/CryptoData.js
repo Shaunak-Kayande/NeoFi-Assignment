@@ -139,4 +139,10 @@ export const tokens = [
     logo: "./cosmos.png",
     ws: "wss://stream.binance.com:9443/ws/atomusdt@trade",
   },
+  {
+    index: 20,
+    name: "GBP",
+    logo: "./gbp.png",
+    ws: "http://api.exchangeratesapi.io/v1/latest?access_key=06d0d2d17be6b59311f82182a614f184",
+  },
 ];

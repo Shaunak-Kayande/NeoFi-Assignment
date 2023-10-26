@@ -4,6 +4,7 @@ import "../styles/DropDown.css";
 import { tokens } from "../data/CryptoData.js";
 import { MdArrowDropDown, MdClose, MdCheck } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
+import axios from "axios";
 
 const CryptoBox = () => {
   const [currCrypto, setCrypto] = useState(0);
@@ -12,7 +13,7 @@ const CryptoBox = () => {
   const [coins, setCoins] = useState("");
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
+  let webSocketFetch = () => {
     let ws = new WebSocket(tokens[currCrypto].ws);
     let price = 0;
     setPrice("--");
@@ -27,6 +28,21 @@ const CryptoBox = () => {
       }
       return;
     };
+  };
+
+  let currencyFetch = async () => {
+    let price = 0;
+    setPrice("--");
+    setCoins("");
+
+    let data = await axios(tokens[20].ws);
+    price = data.data.rates["INR"] / data.data.rates["GBP"];
+    setPrice(Math.round(price * 100) / 100);
+    console.log(price);
+  };
+
+  useEffect(() => {
+    currCrypto == 20 ? currencyFetch() : webSocketFetch();
   }, [currCrypto]);
 
   return (
